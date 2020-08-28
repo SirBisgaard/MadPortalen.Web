@@ -1,0 +1,32 @@
+<div style="max-width: 1400px; margin-left: auto; margin-right: auto;">
+    <div class="col-lg-6 col-md-6">
+        <div class="panel panel-default ">
+            <div class="panel-heading" ng-click="toggleTopRatedRecipes()">
+                <h4 class="panel-title col-md-8 col-lg-8">Populære Opskrifter</h4>
+                <div class="col-md-4 col-lg-4">
+                    <h4><span class="badge pull-right" style="background: #AC8F74">{{recipes.length}}</span></h4>
+                </div>
+            </div>
+
+            <div class="panel-body" id="topRatedRecipes">
+                <recipe-list recipes='recipes' view-type="0"></recipe-list>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" ng-click="toggleTopFollowedUsers()">
+                <h4 class="panel-title col-md-8 col-lg-8">Populære Brugere</h4>
+                <div class="col-md-4 col-lg-4">
+                    <h4><span class="badge pull-right" style="background: #AC8F74">{{users.length}}</span></h4>
+                </div>
+            </div>
+
+            <div class="panel-body" id="topFollowedUsers">
+                <user-list users='users' logged-in-user="user" reload-users="reloadUsers()"></user-list>
+            </div>
+        </div>
+    </div>
+
+</div>

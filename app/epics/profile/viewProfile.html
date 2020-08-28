@@ -1,0 +1,66 @@
+<div class="panel-body">
+    <div class="col-md-4" style="background-color: #F8F0F0; border: 5px solid white;">
+
+        <div class="col-md-12" style="padding-top: 10px">
+            <img class="img-circle img-responsive" ng-src="{{profilePictureURL}}" width="200" height="150" style="margin: 0 auto" alt="Responsive image" />
+            <hr />
+        </div>
+
+        <div class="col-lg-12 form-group" ng-show="user.id != loggedInUser.id">
+                <button class="btn btn-primary" type="button" ng-show="!isFollowing()" ng-click="startFollow()"><span class="glyphicon glyphicon-plus"></span>  Følg</button>
+                <button class="btn btn-warning" type="button" ng-show="isFollowing()" ng-click="unFollow()"><span class="glyphicon glyphicon-minus"></span>  Følg</button>
+            <hr />
+        </div>
+
+        <div class="col-md-12">
+            <h4><b>Brugernavn</b></h4>
+            <p style="text-transform: capitalize">{{user.authorName}}</p>
+            <hr />
+        </div>
+
+        <div class="col-md-12">
+            <h4><b>Navn</b></h4>
+            <p style="text-transform: capitalize">{{user.firstName}} {{user.lastName}}</p>
+            <hr />
+        </div>
+
+        <div class="col-md-12">
+            <h4><b>Email</b></h4>
+            <p>{{user.email}}</p>
+            <hr />
+        </div>
+
+        <div class="col-md-12">
+            <h4><b>Kort beskrivelse</b></h4>
+            <p>{{user.description}}</p>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading" ng-click="toggleRecipes()">
+                <h4 class="panel-title col-md-6 col-lg-6">Opskrift</h4>
+                <div class="col-md-6 col-lg-6">
+                    <h4><span class="badge pull-right" style="background: #AC8F74">{{recipes.length}}</span></h4>
+                </div>
+            </div>
+
+            <div class="panel-body" id="profileRecipes">
+                <recipe-list recipes='recipes' view-type="0"></recipe-list>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" ng-click="toggleMealPlans()">
+                <h4 class="panel-title col-md-6 col-lg-6">Madplan</h4>
+                <div class="col-md-6 col-lg-6">
+                    <h4><span class="badge pull-right" style="background: #AC8F74">{{mealPlans.length}}</span></h4>
+                </div>
+            </div>
+
+            <div class="panel-body" id="profileMealPlans">
+                <meal-plan-list></meal-plan-list>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" id="ingredientModalLabel">Tilføj Ingrediens</h4>
+    </div>
+    <form novalidate name="ingredientForm" ng-submit="save()" role="form">
+        <div class="modal-body">
+            <p>
+                Du er ved at oprette en ny ingrediends som ikke findes i databasen.
+                Det vil ikke være muligt at oprette en ingrediends der allerede findes.
+            </p>
+            <div class="form-group">
+                <div class="form-group" ng-class="{
+                    'has-success has-feedback': ingredientForm.name.$valid && ingredientForm.name.$dirty,
+                    'has-error has-feedback': ingredientForm.name.$invalid && ingredientForm.name.$dirty}">
+
+                    Ingrediens Navn:<br>
+                    <input type="text" class="form-control"
+                           ng-model="ingredient.name" name="name" required ng-minlength="2">
+                    <span style="color:red" ng-show="ingredientForm.name.$invalid && ingredientForm.$submitted">Ingrediens navn er påkrævet
+                    </span>
+                </div>
+
+                <div class="form-group" ng-class="{
+                    'has-success has-feedback': ingredientForm.unitType.$valid && ingredientForm.unitType.$dirty,
+                    'has-error has-feedback': ingredientForm.unitType.$invalid && ingredientForm.unitType.$dirty}">
+
+                    Ingrediens måletype:<br>
+                    <select class="form-control"
+                            ng-model="ingredient.unitType" name="unitType"
+                            data-ng-options="t for t in unitTypes" required>
+                    </select>
+                    <span style="color:red" ng-show="ingredientForm.unitType.$invalid && ingredientForm.$submitted">Måle type er påkrævet
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-default" type="button" ng-click="close()">Annuller</button>
+            <button class="btn btn-success pull-right" type="submit">Tilf&oslash;j</button>
+        </div>
+    </form>
+
+</div>

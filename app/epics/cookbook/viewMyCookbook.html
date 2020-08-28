@@ -1,0 +1,27 @@
+<div style="max-width: 1200px; margin-left: auto; margin-right: auto;">
+    <div class="panel panel-default">
+        <div class="panel-heading" ng-click="toggleRecipes()">
+            <h4 class="panel-title col-md-6 col-lg-6">Opskrift</h4>
+            <div class="col-md-6 col-lg-6">
+                <h4><span class="badge pull-right" style="background: #AC8F74">{{cookbook.recipes.length}}</span></h4>
+            </div>
+        </div>
+
+        <div class="panel-body" id="myCookbookRecipes">
+            <recipe-list recipes='recipes' view-type="0"></recipe-list>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" ng-click="toggleMealPlans()">
+            <h4 class="panel-title col-md-6 col-lg-6">Madplan</h4>
+            <div class="col-md-6 col-lg-6">
+                <h4><span class="badge pull-right" style="background: #AC8F74">{{cookbook.mealPlans.length}}</span></h4>
+            </div>
+        </div>
+
+        <div class="panel-body" id="myCookbookMealPlans">
+            <meal-plan-list></meal-plan-list>
+        </div>
+    </div>
+</div>
+

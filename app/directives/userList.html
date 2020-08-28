@@ -1,0 +1,20 @@
+<div id="userList">
+    <div ng-repeat="user in users">
+        <div class="col-lg-3" ui-sref="home.viewProfile({id : user.id})">
+            <img class="img-circle img-responsive" ng-src="{{createUserUrl(user)}}" width="200" height="150" alt="Responsive image" style="margin: auto"/>
+        </div>
+        <div class="col-lg-6" ui-sref="home.viewProfile({id : user.id})">
+            <h2>{{user.authorName}}</h2>
+            <p>{{user.description}}</p>
+        </div>
+        <div class="col-lg-3">
+            <div style="margin: 5px 0px"><span class="label label-default"><span class="glyphicon glyphicon-cutlery"></span>  Opskrifter: {{user.cookbook.recipes.length}}</span></div>
+            <div style="margin: 5px 0px"><span class="label label-default"><span class="glyphicon glyphicon-calendar"></span>  Madplaner: {{user.cookbook.mealPlans.length}}</span></div>
+            <div style="margin: 5px 0px"><span class="label label-default"><span class="glyphicon glyphicon-user"></span>  Følgere: {{user.followers.length}}</span></div>
+            <div style="margin: 5px 0px"><button class="btn btn-primary btn-xs" type="button" ng-show="user.id != loggedInUser.id && !isFollowingList(user)" ng-click="startFollowList(user)"><span class="glyphicon glyphicon-plus"></span>  Følg</button></div>
+            <div style="margin: 5px 0px"><button class="btn btn-warning btn-xs" type="button" ng-show="user.id != loggedInUser.id && isFollowingList(user)" ng-click="unFollowList(user)"><span class="glyphicon glyphicon-minus"></span>  Følg</button></div>
+        </div>
+        <div class="clearfix"></div>
+        <hr ng-show="!$last" class="hr-recipeList">
+    </div>
+</div>

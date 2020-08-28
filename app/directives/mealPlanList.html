@@ -1,0 +1,20 @@
+<div id="mealPlanList">
+    <div ng-repeat="mealPlan in mealPlans">
+        <div class="col-lg-3" style="padding: 30px;" ng-click="openMealPlan(mealPlan.id)">
+            <span class="glyphicon glyphicon-calendar center-block" aria-hidden="true" style="font-size: 5.0em;"></span>
+        </div>
+        <div class="col-lg-6" ng-click="openMealPlan(mealPlan.id)">
+            <h2>{{mealPlan.title}}</h2>
+            <p>{{mealPlan.description}}</p>
+            <p>Lavet af: <a href="" ui-sref="home.viewProfile({id: mealPlan.createdBy.id})">{{mealPlan.createdBy.authorName}}</a></p>
+        </div>
+        <div class="col-lg-3">
+            <div style="margin: 5px 0px"><span class="label label-default"><span class="glyphicon glyphicon-cutlery"></span>  Opskrifter: {{numberOfRecipesInMealPlan(mealPlan)}}</span></div>
+            <div style="margin: 5px 0px"><button class="btn btn-success btn-xs" ng-click="addSharedMealPlanToCookbook(mealPlan.id)" ng-show="isNotOwnerOfMealPlan(mealPlan.createdBy.id) && !isMealPlanInCookbook(mealPlan.id)"><span class="glyphicon glyphicon-plus"></span>  Kogebog</button></div>
+            <div style="margin: 5px 0px"><button class="btn btn-danger btn-xs" ng-click="removeSharedRecipeFromCookbook(mealPlan.id)" ng-show="isNotOwnerOfMealPlan(mealPlan.createdBy.id) && isMealPlanInCookbook(mealPlan.id)"><span class="glyphicon glyphicon-minus"></span>  Kogebog</button></div>
+            <div style="margin: 5px 0px"><button class="btn btn-warning btn-xs" ui-sref="home.editMealPlan({id: mealPlan.id})" ng-show="!isNotOwnerOfMealPlan(mealPlan.createdBy.id)"><span class="glyphicon glyphicon-pencil"></span> Ret Madplan</button></div>
+        </div>
+        <div class="clearfix"></div>
+        <hr ng-show="!$last" class="hr-recipeList">
+    </div>
+</div>

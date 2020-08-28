@@ -1,0 +1,11 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{content.title}}</h3>
+</div>
+<div class="modal-body">
+    {{content.body}}
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success"ng-show="type == static.OKAY"type="button" ng-click="ok()">Okay</button>
+    <button class="btn btn-danger" ng-show="type == static.YESNO" type="button" ng-click="no()">Nej</button>
+    <button class="btn btn-primary" ng-show="type == static.YESNO" type="button" ng-click="yes()">Ja</button>
+</div>

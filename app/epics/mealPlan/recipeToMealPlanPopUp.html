@@ -1,0 +1,36 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Tilføj opskrift til madplan</h4>
+    </div>
+    <div class="modal-body">
+
+        <form novalidate name="mealPlanForm" ng-submit="mealPlanForm.$valid && save()" role="form">
+
+            <div class="col-lg-12 col-md-12">
+
+                <div class="col-lg-6 col-md-6">
+                    <select class="form-control" ng-model="mealPlan" ng-change="updateMealPlan(mealPlan)"
+                            data-ng-options="mealPlan as mealPlan.title for mealPlan in mealPlans" required>
+                        <option class="col-lg-6 col-md-6" value="">Vælg madplan</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                    <select class="form-control" ng-model="day" ng-change="updateDay(day)"
+                            ng-options="day as day.nameOfDay for day in days"
+                            ng-show="mealPlanSelected != null" required>
+                        <option value="">Vælg dag</option>
+                    </select>
+                </div>
+            </div>
+            <div class="pull-right" style="margin-top: 20px">
+                <button class="btn btn-default" type="button" ng-click="close()">Annuller</button>
+                <button class="btn btn-success" type="submit">Gem</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer" style="margin-top: 30px">
+    </div>
+
+</div>

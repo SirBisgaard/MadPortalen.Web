@@ -1,0 +1,28 @@
+{
+  "name": "madportalen-angular.js",
+  "version": "2.0.0",
+  "description": "",
+  "main": "karma.conf.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "angular-mocks": "^1.5.8",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^0.3.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "karma start karma.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Anders_Andersen@bitbucket.org/thegroup5/madportalen-angular.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "madportalen.abegrotten.org"
+}

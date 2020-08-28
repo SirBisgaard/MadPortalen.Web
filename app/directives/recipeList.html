@@ -1,0 +1,36 @@
+<div id="recipeList">
+    <div ng-repeat="recipe in recipes">
+        <div class="col-lg-3" ui-sref="home.viewRecipe({id : recipe.id})">
+            <img class="img-rounded img-responsive" ng-src="{{ createRecipeURL(recipe.pictureLocation) }}" width="200" height="150" style="margin: auto"/>
+        </div>
+        <div class="col-lg-6">
+            <h2 ui-sref="home.viewRecipe({id : recipe.id})">{{recipe.name}}</h2>
+            <p ui-sref="home.viewRecipe({id : recipe.id})" style="word-break:break-all; white-space:pre-line;">{{recipe.shortDescription}}</p>
+            <p>Lavet af: <a href="" ui-sref="home.viewProfile({id: recipe.createdBy.id})">{{recipe.createdBy.authorName}}</a></p>
+        </div>
+        <div class="col-lg-3">
+            <div style="margin: 5px 0px">
+                <span class="label label-default" ng-class="{'label-danger': recipe.rating<=2, 'label-warning': recipe.rating>2 && recipe.rating<4, 'label-success': recipe.rating>=4}">
+                    Rate: {{recipe.rating}}
+                </span>
+            </div>
+            <div style="margin: 5px 0px"><span class="label label-default">Opskrifts Type: {{recipe.dishType}}</span></div>
+            <div style="margin: 5px 0px"><span class="label label-default">Sv&aelig;rhedsgrad: {{recipe.difficulty}}</span></div>
+
+
+
+            <div style="margin: 5px 0px" ng-hide="$state.current.name === 'home.createMealPlan' || $state.current.name === 'home.editMealPlan'"><button class="btn btn-success btn-xs" ng-click="addSharedRecipeToCookbook(recipe.id)" ng-show="isNotOwnerOfRecipe(recipe.createdBy.id) && !isRecipeInCookbook(recipe.id)" ><span class="glyphicon glyphicon-plus"></span> Kogebog</button></div>
+            <div style="margin: 5px 0px" ng-hide="$state.current.name === 'home.createMealPlan' || $state.current.name === 'home.editMealPlan'"><button class="btn btn-danger btn-xs" ng-click="removeSharedRecipeFromCookbook(recipe.id)" ng-show="isNotOwnerOfRecipe(recipe.createdBy.id) && isRecipeInCookbook(recipe.id)"><span class="glyphicon glyphicon-minus"></span> Kogebog</button></div>
+            <div style="margin: 5px 0px"  ng-show="viewType == 1 && $state.current.name == 'home.createMealPlan' || viewType == 1 && $state.current.name == 'home.editMealPlan'"><button class="btn btn-success btn-xs" ng-click="metode({id: recipe.id})"><span class="glyphicon glyphicon-plus"></span>  Madplan</button></div>
+            <div style="margin: 5px 0px" ng-show="viewType == 2 && $state.current.name == 'home.createMealPlan' || viewType == 2 && $state.current.name == 'home.editMealPlan'"><button class="btn btn-danger btn-xs" ng-click="removeRecipeFromMP(recipe.id)" ><span class="glyphicon glyphicon-minus"></span>  Madplan</button></div>
+            <div style="margin: 5px 0px"><button class="btn btn-success btn-xs" ng-click="addRecipeToMealPlan(recipe.id) " ng-hide="$state.current.name === 'home.createMealPlan' || $state.current.name === 'home.editMealPlan'"><span class="glyphicon glyphicon-plus"></span>  Madplan</button></div>
+
+
+            <div style="margin: 5px 0px" ng-hide="$state.current.name === 'home.createMealPlan' || $state.current.name === 'home.editMealPlan'"><button class="btn btn-warning btn-xs" ui-sref="home.editRecipe({id : recipe.id})" ng-show="!isNotOwnerOfRecipe(recipe.createdBy.id)"><span class="glyphicon glyphicon-pencil"></span>  Ret Opskrift</button></div>
+
+        </div>
+        <div class="clearfix"></div>
+        <hr ng-show="!$last" class="hr-recipeList">
+    </div>
+</div>
+

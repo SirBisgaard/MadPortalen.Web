@@ -1,0 +1,64 @@
+<div>
+    <div class="col-md-4" id="refrigeratorSearch" style="background-color: #F8F0F0">
+        <div class="col-md-12">
+            <h4>
+                Hvad har du i dit køleskab?
+                <span class="glyphicon glyphicon-question-sign" uib-tooltip="Her kan du tilføje de ingredienser du ønsker at søge med"></span>
+            </h4>
+        </div>
+
+        <div class="col-md-12">
+            <ingredient-Picker></ingredient-Picker>
+            <hr />
+        </div>
+        <div class="col-md-12">
+            <h4>Søger du noget specifikt?</h4>
+        </div>
+        <div class="col-md-12">
+            <button class="btn btn-primary pull-right btn-sm" ng-click="toggleFilters()" type="button">Filter</button>
+        </div>
+
+        <div id="searchFilters" style="display:none">
+            <div class="col-md-12">
+                <label for="recipeName">Opskrift Navn</label>
+                <input type="text" class="form-control" id="recipeName" ng-model-options="{ debounce: 500 }" ng-change="updateRecipes()" ng-model="recipe.name">
+            </div>
+            <div class="col-md-12">
+                <label for="recipeServes">Portioner</label>
+                <input type="number" class="form-control" id="recipeServes" ng-model-options="{ debounce: 500 }" ng-change="updateRecipes()" ng-model="recipe.serves">
+            </div>
+            <div class="col-md-12">
+                <label>Opskrifts Type</label>
+                <select ng-model="recipe.dishType" ng-change="updateRecipes()" class="form-control">
+                    <option></option>
+                    <option>Forret</option>
+                    <option>Hovedret</option>
+                    <option>Dessert</option>
+                    <option>Morgenmad</option>
+                    <option>Frokost</option>
+                    <option>Bagværk</option>
+                    <option>Snack</option>
+                    <option>Salat</option>
+                </select>
+            </div>
+
+            <div class="col-md-12">
+                <label for="recipeServes">Sværhedsgrad</label>
+
+                <select ng-change="updateRecipes()" ng-model="recipe.difficulty" class="form-control">
+                    <option></option>
+                    <option>Meget Let</option>
+                    <option>Let</option>
+                    <option>Moderat</option>
+                    <option>Svært</option>
+                    <option>Meget Svært</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <recipe-List recipes='recipes' view-type="0"></recipe-List>
+    </div>
+</div>
+

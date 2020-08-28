@@ -1,0 +1,116 @@
+<div class="panel-body">
+    <form name="createRecipeForm" ng-submit="createRecipe()" novalidate>
+        <div class="col-lg-6">
+
+            <div class="form-group col-md-12">
+                <img class="img-thumbnail img-responsive" id="recipePicture" src="/pics/recipe/defaultRecipePic.png" />
+            </div>
+            <div class="form-group col-lg-12" ng-class="{
+        'has-success has-feedback': createRecipeForm.recipeName.$valid && createRecipeForm.recipeName.$dirty,
+        'has-error has-feedback': createRecipeForm.recipeName.$invalid && createRecipeForm.recipeName.$dirty}">
+
+                <label for="recipeName">Opskrift Navn</label>
+                <input type="text" class="form-control" ng-model="recipe.name" name="recipeName" id="recipeName" required ng-minlength="4" ng-maxlength="75">
+
+                <label class="label label-danger" ng-show="createRecipeForm.recipeName.$error.required && createRecipeForm.$submitted && createRecipeForm.recipeName.$invalid">Du skal skrive en opskrift title.</label>
+                <label class="label label-danger" ng-show="createRecipeForm.recipeName.$error.minlength && createRecipeForm.$submitted && createRecipeForm.recipeName.$invalid">Titlen skal minimum være 4 lang.</label>
+                <label class="label label-danger" ng-show="createRecipeForm.recipeName.$error.maxlength && createRecipeForm.$submitted">Titlen må maksimum være 75 lang.</label>
+            </div>
+
+
+            <div class="form-group col-lg-6">
+                <label for="recipePicture" class="control-label">Opskrift Billede:</label>
+                <div class="input-group">
+                    <input class="form-control" file-model="recipePicture" name="recipePicture" id="recipePictureInput" placeholder="Vælg Billede" type="file" />
+                </div>
+            </div>
+
+            <div class="form-group col-lg-6" ng-class="{
+        'has-success has-feedback': createRecipeForm.recipeServes.$valid && createRecipeForm.recipeServes.$dirty,
+        'has-error has-feedback': createRecipeForm.recipeServes.$invalid && createRecipeForm.recipeServes.$dirty}">
+                <label for="recipeServes">Portioner</label>
+                <input type="number" class="form-control" placeholder="2"
+                       ng-model="recipe.serves" id="recipeServes" name="recipeServes" required>
+                <label class="label label-danger" ng-show="createRecipeForm.recipeServes.$error.required && createRecipeForm.$submitted">Du skal vælge et antal portioner.</label>
+            </div>
+
+            <div class="form-group col-lg-6" ng-class="{
+        'has-success has-feedback': createRecipeForm.recipeDifficulty.$valid && createRecipeForm.recipeDifficulty.$dirty,
+        'has-error has-feedback': createRecipeForm.recipeDifficulty.$invalid && createRecipeForm.recipeDifficulty.$dirty}">
+                <label for="recipeDifficulty">Sværhedsgrad</label>
+                <select ng-model="recipe.difficulty" name="recipeDifficulty" id="recipeDifficulty" class="form-control" required>
+                    <option>Meget Let</option>
+                    <option>Let</option>
+                    <option>Moderat</option>
+                    <option>Svært</option>
+                    <option>Meget Svært</option>
+                </select>
+                <label class="label label-danger" ng-show="createRecipeForm.recipeDifficulty.$error.required && createRecipeForm.$submitted && createRecipeForm.recipeDifficulty.$invalid">Du skal vælge en sværhedsgrad.</label>
+            </div>
+            <div class="form-group col-lg-6" ng-class="{
+        'has-success has-feedback': createRecipeForm.recipeDishType.$valid && createRecipeForm.recipeDishType.$dirty,
+        'has-error has-feedback': createRecipeForm.recipeDishType.$invalid && createRecipeForm.recipeDishType.$dirty}">
+                <label for="recipeDishType">Opskrifts Type</label>
+                <select ng-model="recipe.dishType" name="recipeDishType" id="recipeDishType" class="form-control" required>
+                    <option>Forret</option>
+                    <option>Hovedret</option>
+                    <option>Dessert</option>
+                    <option>Morgenmad</option>
+                    <option>Frokost</option>
+                    <option>Bagværk</option>
+                    <option>Snack</option>
+                    <option>Salat</option>
+                </select>
+                <label class="label label-danger" ng-show="createRecipeForm.recipeDishType.$error.required && createRecipeForm.$submitted && createRecipeForm.recipeDishType.$invalid">Du skal vælge en opskrifts type.</label>
+            </div>
+
+            <div class="form-group col-lg-12">
+                <label>Ingredienser</label>
+                <span class="glyphicon glyphicon-question-sign" uib-tooltip="Her søger du på de ingredienser der skal tilføjes til opskriften"></span>
+                <ingredient-Picker></ingredient-Picker>
+            </div>
+            <div class="form-group col-lg-12">
+                <button class="btn-success btn" type="button" ng-click="createIngredient()">Opret ny Ingrediens</button>
+                <div class="glyphicon glyphicon-question-sign" uib-tooltip="Findes ingrediensen ikke i vores database? Opret den her!"></div>
+
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="form-group col-lg-12" ng-class="{
+        'has-success has-feedback': createRecipeForm.recipeShortDescription.$valid && createRecipeForm.recipeShortDescription.$dirty,
+        'has-error has-feedback': createRecipeForm.recipeShortDescription.$invalid && createRecipeForm.recipeShortDescription.$dirty}">
+                <label for="recipeShortDescription">Kort Beskrivelse</label>
+                <span class="glyphicon glyphicon-question-sign" uib-tooltip="Minimum 20, maks 120 tegn"></span>
+
+                <textarea ng-model="recipe.shortDescription" name="recipeShortDescription" id="recipeShortDescription" rows="10" class="form-control" required ng-minlength="20" ng-maxlength="120">
+                </textarea>
+                <label class="label label-danger" ng-show="createRecipeForm.recipeShortDescription.$error.required && createRecipeForm.$submitted && createRecipeForm.recipeShortDescription.$invalid">Du skal skrive en kort beskrivelse.</label>
+                <label class="label label-danger" ng-show="createRecipeForm.recipeShortDescription.$error.minlength && createRecipeForm.$submitted && createRecipeForm.recipeShortDescription.$invalid">Beskrivelsen skal minimum være 20 lang.</label>
+                <label class="label label-danger" ng-show="createRecipeForm.recipeShortDescription.$error.maxlength && createRecipeForm.$submitted && createRecipeForm.recipeShortDescription.$invalid">Titlen må maksimum være 120 lang.</label>
+            </div>
+            <div class="form-group col-lg-12" ng-class="{
+        'has-success has-feedback': createRecipeForm.recipeFullDescription.$valid && createRecipeForm.recipeFullDescription.$dirty,
+        'has-error has-feedback': createRecipeForm.recipeFullDescription.$invalid && createRecipeForm.recipeFullDescription.$dirty}">
+                <label for="recipeFullDescription">Lang Beskrivelse</label>
+                <span class="glyphicon glyphicon-question-sign" uib-tooltip="Minimum 120, maks 3000 tegn"></span>
+
+                <textarea ng-model="recipe.longDescription" name="recipeFullDescription" id="recipeFullDescription" rows="20" class="form-control" required ng-minlength="120" ng-maxlength="3000">
+                </textarea>
+                <label class="label label-danger" ng-show="createRecipeForm.recipeFullDescription.$error.required && createRecipeForm.$submitted && createRecipeForm.recipeFullDescription.$invalid">Du skal skrive en lang beskrivelse.</label>
+                <label class="label label-danger" ng-show="createRecipeForm.recipeFullDescription.$error.minlength && createRecipeForm.$submitted && createRecipeForm.recipeFullDescription.$invalid">Beskrivelsen skal minimum være 120 lang.</label>
+                <label class="label label-danger" ng-show="createRecipeForm.recipeFullDescription.$error.maxlength && createRecipeForm.$submitted && createRecipeForm.recipeFullDescription.$invalid">Beskrivelsen må maksimum være 1200 lang.</label>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="col-lg-12">
+                <div class="input-group pull-right">
+                <button class="btn-warning btn" onclick="history.go(-1)" type="button">Annuller</button>
+                <button class="btn-primary btn pull-right" type="submit">Opret</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

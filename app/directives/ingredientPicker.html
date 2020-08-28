@@ -1,0 +1,24 @@
+﻿
+<ul class="list-group">
+    <li class="list-group-item list-group-item-success">
+        <input type="text" class="form-control" ng-model="searchText" ng-model-options="{ debounce: 500 }" ng-change="getIngridiants()" name="searchIngredients">
+    </li>
+
+    <li class="list-group-item list-group-item-info" ng-repeat="obj in listIngredients | filter:searchText">
+        <button type="button" class="btn btn-sm btn-success pull-right" ng-click="addToIngredients(obj)">Tilføj</button>
+        <label style="text-transform: capitalize">{{obj.name}}</label>
+    </li>
+</ul>
+<ul class="list-group">
+    <li class="list-group-item list-group-item-success" ng-repeat="obj in recipe.ingredients">
+        <div class="input-group">
+            <span class="input-group-addon" style="text-transform: capitalize">{{obj.ingredient.name}}</span>
+            <input type="number" class="form-control" ng-model-options="{ debounce: 500 }" ng-change="updateRecipes()"
+                    placeholder="Angiv mængde" style="text-align: right" ng-model="obj.amount" value="0" required>
+            <span class="input-group-addon">{{obj.ingredient.unitType}}</span>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-danger" ng-click="removeFromIngridiants(obj)"><span class="glyphicon glyphicon-remove"></span></button>
+            </span>
+        </div>
+    </li>
+</ul> 

@@ -1,0 +1,16 @@
+<div ng-repeat="day in days">
+    <div class="panel panel-default" id="mealPlan">
+        <div class="panel-heading" ng-click="toggleMealPlanDay(day.nameOfDay)">
+            <h4 class="panel-title col-md-6 col-lg-6">{{day.nameOfDay}}</h4>
+            <div class="col-md-6 col-lg-6">
+                <h4><span class="badge pull-right" style="background: #AC8F74">{{day.recipes.length}}</span></h4>
+            </div>
+        </div>
+
+        <div class="panel-body" id="{{day.nameOfDay}}">
+            <recipe-list recipes='day.recipes' view-type='viewType.two' removel="removeRecipeFromDayInMP(id)"></recipe-list>
+        </div>
+    </div>
+</div>
+
+

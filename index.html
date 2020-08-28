@@ -1,0 +1,93 @@
+﻿
+<!DOCTYPE html>
+
+<html ng-app="madportalen" lang="en">
+<head>
+    <title>Madportalen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+
+    <!-- libraries -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="css/ui-bootstrap-csp.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-mocks.js"></script>
+    <script src="js/angular-cookies.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
+    <script src="js/ui-bootstrap.min.js"></script>
+    <script src="js/ui-bootstrap-tpls.min.js"></script>
+    <script src="js/angular-resource.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="app/app.js" type="text/javascript"></script>
+
+    <!-- services -->
+    <script src="app/services/authService.js" type="text/javascript"></script>
+    <script src="app/services/ingredientService.js" type="text/javascript"></script>
+    <script src="app/services/recipeService.js" type="text/javascript"></script>
+    <script src="app/services/userService.js" type="text/javascript"></script>
+    <script src="app/services/fileService.js" type="text/javascript"></script>
+    <script src="app/services/mealPlanService.js" type="text/javascript"></script>
+    <script src="app/services/dialogService.js" type="text/javascript"></script>
+
+    <!-- directives -->
+    <script src="app/directives/ingredientPicker.js" type="text/javascript"></script>
+    <script src="app/directives/recipeList.js" type="text/javascript"></script>
+    <script src="app/directives/fileModel.js" type="text/javascript"></script>
+    <script src="app/directives/mealPlan.js" type="text/javascript"></script>
+    <script src="app/directives/mealPlanList.js" type="text/javascript"></script>
+    <script src="app/directives/userList.js" type="text/javascript"></script>
+
+    <!-- controllers -->
+    <script src="app/epics/frontPage/frontPageCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/cookbook/viewMyCookbookCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/home/homeCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/login/loginCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/login/resetPasswordCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/login/newPasswordCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/login/userSignUpCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/profile/editMyProfileCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/profile/viewProfileCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/recipe/createRecipeCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/recipe/editRecipeCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/recipe/viewRecipeCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/refridgerator/refrigeratorCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/login/activateEmailCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/mealPlan/createMealPlanCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/mealPlan/viewMealPlanCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/mealPlan/viewMealPlanListCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/mealPlan/selectDayPopUpCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/dialog/dialogModalCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/mealPlan/recipeToMealPlanCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/mealPlan/editMealPlanCtrl.js" type="text/javascript"></script>
+    <script src="app/modals/createIngredientModalCtrl.js" type="text/javascript"></script>
+    <script src="app/epics/mealPlan/selectDayPopUpCtrl.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <div class="modal fade" id="loadingModal" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="loadingModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Tænker lige.. Vent venligst!</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-success active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                            <span class="sr-only">Loading</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <label>Madportalen</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ui-view></div>
+</body>
+</html>

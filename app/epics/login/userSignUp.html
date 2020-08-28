@@ -1,0 +1,74 @@
+
+<panel class="container">
+    <div class="panel panel-default" id="userSignUp">
+        <div class="panel-heading">
+            <h3 class="panel-title">Opret Bruger</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-group" novalidate name="visitForm" ng-submit="visitForm.$valid && saveUser()">
+                <div class="form-group" ng-class="{
+        'has-success has-feedback': visitForm.authorname.$valid && visitForm.authorname.$dirty,
+        'has-error has-feedback': visitForm.authorname.$invalid && visitForm.authorname.$dirty}">
+                    Forfatternavn:<br>
+                    <input type="text" class="form-control"
+                           ng-model="user.authorname" name="authorname" placeholder="Forfatternavn" required ng-minlength="2">
+                    <span style="color:red" ng-show="visitForm.authorname.$invalid && visitForm.$submitted">Forfatternavn er påkrævet
+                    </span>
+                </div>
+
+                <div class="form-group" ng-class="{
+        'has-success has-feedback': visitForm.password.$valid && visitForm.password.$dirty,
+        'has-error has-feedback': visitForm.password.$invalid && visitForm.password.$dirty}">
+                    Kodeord:<br>
+                    <input type="password" class="form-control"
+                           ng-model="user.password" name="password" placeholder="Kodeord" required ng-minlength="6">
+                    <span style="color:red" ng-show="visitForm.password.$invalid && visitForm.$submitted">Kodeord er paakraevet
+                    </span>
+                </div>
+
+                <div class="form-group" ng-class="{
+        'has-success has-feedback': visitForm.firstname.$valid && visitForm.firstname.$dirty,
+        'has-error has-feedback': visitForm.firstname.$invalid && visitForm.firstname.$dirty}">
+                    Fornavn:<br>
+                    <input type="text" class="form-control"
+                           ng-model="user.firstname" name="firstname" placeholder="Fornavn" required ng-minlength="2">
+                    <span style="color:red" ng-show="visitForm.firstname.$invalid && visitForm.$submitted">Fornavn er påkrævet
+                    </span>
+                </div>
+
+                <div class="form-group" ng-class="{
+        'has-success has-feedback': visitForm.lastname.$valid && visitForm.lastname.$dirty,
+        'has-error has-feedback': visitForm.lastname.$invalid && visitForm.lastname.$dirty}">
+                    Efternavn:<br>
+                    <input type="text" class="form-control"
+                           ng-model="user.lastname" name="lastname"  placeholder="Efternavn" required ng-minlength="2">
+                <span style="color:red" ng-show="visitForm.lastname.$invalid && visitForm.$submitted">Efternavn er påkrævet
+                </span>
+                </div>
+
+                <div class="form-group" ng-class="{
+        'has-success has-feedback': visitForm.emailadresse.$valid && visitForm.emailadresse.$dirty,
+        'has-error has-feedback': visitForm.emailadresse.$invalid && visitForm.emailadresse.$dirty}">
+                    Email:<br>
+                    <input type="email" class="form-control"
+                           ng-model="user.emailadresse" name="emailadresse"  placeholder="Email" required ng-minlength="4">
+                <span style="color:red" ng-show="visitForm.emailadresse.$invalid && visitForm.$submitted">
+                Email er påkrævet
+                    <span ng-show="visitForm.emailadresse.$error.emailadresse">invalid email addresse</span>
+                </span>
+                </div>
+
+                <div class="form-group">
+                    Beskrivelse<br>
+                    <textarea class="form-control" rows="3" ng-model="user.description" placeholder="Beskrivelse"></textarea>
+                </div>
+
+                <br>
+
+                <a href="#" ui-sref="login" type="button" class="btn btn-warning">Annuller</a>
+                <button type="submit" class="btn btn-primary pull-right">Opret</button>
+
+            </form>
+        </div>
+    </div>
+</panel>

@@ -1,0 +1,45 @@
+<div class="navbar navbar-costum navbar-fixed-top">
+    <div class="container">
+        <a href="" ui-sref="home.frontPage" class="navbar-brand">Madportalen</a>
+    </div>
+
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" style="border-color: white; margin-left: 30px" class="navbar-toggle pull-right" data-toggle="collapse" data-target="#myNavbar">
+                <span style="background-color: white" class="icon-bar"></span>
+                <span style="background-color: white" class="icon-bar"></span>
+                <span style="background-color: white" class="icon-bar"></span>
+            </button>
+        </div>
+        <ul class="nav navbar-nav navbar-right collapse navbar-collapse boot" id="myNavbar">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="">Min Kogebog<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="" ui-sref="home.personalCookbook">Vis Kogebog</a></li>
+                    <li><a href="" ui-sref="home.createRecipe">Opret Opskrift</a></li>
+                </ul>
+            </li>
+            <li><a href="" ui-sref="home.refrigerator">Køleskab</a></li>
+            <li><a href="" ui-sref="home.viewTipsAndTricks">Tips & Tricks</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="">Madplan<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="" ui-sref="home.viewMealPlanList">Vis Madplaner</a></li>
+                    <li><a href="" ui-sref="home.createMealPlan">Opret Madplan</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="" style="color:#F23E2E"><span class="glyphicon glyphicon-user"></span> {{user.authorName}}</a>
+                <ul class="dropdown-menu">
+                    <li><a href="" ui-sref="home.viewProfile({id: user.id})">Vis Profil</a></li>
+                    <li><a href="" ui-sref="home.editMyProfile({id: user.id})">Ret Profil</a></li>
+                    <li><a href="" ng-click="logoff()">Log af</a></li>
+                </ul>
+            </li>
+            <li><input type="text" ng-model="name" ng-change="goToSearch()" class="form-control navbar-form" placeholder="Search..." style="display:none" id="search"></li>
+            <li><a href="" class="glyphicon glyphicon-search" style="color:#CF91AA" onclick="$('#search').toggle()"></a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="container-fluid" style="padding-top: 15px" ui-view></div>

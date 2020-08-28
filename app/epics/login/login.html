@@ -1,0 +1,61 @@
+
+<panel class="container">
+    <div class="panel panel-default" id="loginPanel" style="">
+        <div class="panel-heading">
+            <h3 class="panel-title">Madportalen</h3>
+        </div>
+        <div class="panel-body">
+            <form novalidate name="loginForm" ng-submit="loginForm.$valid && userLogin()" role="form">
+                <p id="login-text">
+                    Indtast din email og dit kodeord
+                </p>
+
+                <div class="form-group" ng-class="{
+                'has-success has-feedback': loginForm.username.$valid && loginForm.username.$dirty,
+                'has-error has-feedback': loginForm.username.$invalid && loginForm.username.$dirty}">
+                    <input type="text" class="form-control" placeholder="Email..." id="usr"
+                           ng-model="username" name="username" required ng-minlength="1">
+                </div>
+                <div class="form-group" ng-class="{
+                'has-success has-feedback': loginForm.password.$valid && loginForm.password.$dirty,
+                'has-error has-feedback': loginForm.password.$invalid && loginForm.password.$dirty}">
+                    <input type="password" class="form-control" placeholder="Kodeord..." id="pwd"
+                           ng-model="password" name="password" required ng-minlength="6">
+                </div>
+                <div>
+                    <a href="#" id="login-text" ui-sref="signUpForm">Opret bruger</a>
+                    <br>
+                    <a href="reset" id="login-text" ui-sref="resetPasswordForm">Glemt dit kodeord?</a>
+                    <br>
+                    <button type="submit" class="btn btn-group btn-primary pull-right">Login</button>
+
+                </div>
+                <div>
+                        <span class="error">
+                            <label class="label label-danger"
+                                   ng-show="loginForm.username.$invalid && loginForm.$submitted">
+                                Mangler brugernavn </label>
+                            <label class="label label-danger"
+                                   ng-show="loginForm.password.$invalid && loginForm.$submitted">
+                                Mangler Kodeord</label>
+                        </span>
+                </div>
+            </form>
+        </div>
+
+        <div class="panel-footer">
+            <ul>
+                Madportalen samler dine opskrifter ét sted og inspirerer til nye retter.
+            </ul>
+            <ul>
+                Få adgang til massevis af opskrifter og gode mad-tips.
+            </ul>
+            <ul>
+                Mindsk madspild ved brug af Køleskabs funktionen.
+            </ul>
+            <ul>
+                Kontakt: madportalendk@gmail.com
+            </ul>
+        </div>
+    </div>
+</panel>

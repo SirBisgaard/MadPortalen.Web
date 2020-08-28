@@ -1,0 +1,76 @@
+<div class="panel-body">
+    <form novalidate name="editUserForm" ng-submit="editUserForm.$valid && editUser()">
+
+        <div class="form-group col-md-6">
+            <img class="img-thumbnail img-responsive" ng-src="{{profilePictureURL}}" />
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="profilePicture" class="control-label">Profil Billede:</label>
+            <div class="input-group">
+                <input class="form-control" file-model="profilePicture" name="profilePicture" id="profilePicture" placeholder="V&aelig;lg Billede" type="file" />
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button" ng-click="uploadPicture()">Gem!</button>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6" ng-class="{
+        'has-success has-feedback': editUserForm.authorname.$valid && editUserForm.authorname.$dirty,
+        'has-error has-feedback': editUserForm.authorname.$invalid && editUserForm.authorname.$dirty}">
+            <label for="authorname" class="control-label">Forfatternavn:</label>
+            <input type="text" class="form-control"
+                   ng-model="user.authorName" name="authorname" id="authorname" placeholder="Forfatternavn" required ng-minlength="2">
+            <label class="label label-danger " ng-show="editUserForm.authorname.$invalid && editUserForm.$submitted">Forfatternavn er for kort eller mangler.</label>
+        </div>
+
+        <div class="form-group col-md-6" ng-class="{
+        'has-success has-feedback': editUserForm.firstname.$valid && editUserForm.firstname.$dirty,
+        'has-error has-feedback': editUserForm.firstname.$invalid && editUserForm.firstname.$dirty}">
+            <label for="firstname" class="control-label">Fornavn:</label>
+            <input type="text" class="form-control"
+                   ng-model="user.firstName" name="firstname" id="firstname" placeholder="Fornavn" required ng-minlength="2">
+            <label class="label label-danger " ng-show="editUserForm.firstname.$invalid && editUserForm.$submitted">Fornavn er for kort eller mangler.</label>
+        </div>
+
+        <div class="form-group col-md-6" ng-class="{
+        'has-success has-feedback': editUserForm.lastname.$valid && editUserForm.lastname.$dirty,
+        'has-error has-feedback': editUserForm.lastname.$invalid && editUserForm.lastname.$dirty}">
+            <label for="lastname" class="control-label">Efternavn:</label>
+            <input type="text" class="form-control"
+                   ng-model="user.lastName" name="lastname" id="lastname" placeholder="Efternavn" required ng-minlength="2">
+            <label class="label label-danger" ng-show="editUserForm.lastname.$invalid && editUserForm.$submitted">Efternavn er for kort eller mangler.</label>
+        </div>
+
+        <div class="form-group  col-md-6" ng-class="{
+        'has-success has-feedback': editUserForm.emailadresse.$valid && editUserForm.emailadresse.$dirty,
+        'has-error has-feedback': editUserForm.emailadresse.$invalid && editUserForm.emailadresse.$dirty}">
+            <label for="emailadresse" class="control-label">Email:</label>
+            <input type="email" class="form-control"
+                   ng-model="user.email" name="emailadresse" id="emailadresse" placeholder="Email" required ng-minlength="6">
+            <label class="label label-danger" ng-show="editUserForm.emailadresse.$invalid && editUserForm.$submitted ||
+            editUserForm.emailadresse.$error.emailadresse && editUserForm.$submitted">Invalid email addresse.</label>
+        </div>
+
+        <div class="form-group col-md-12" ng-class="{
+        'has-success has-feedback': editUserForm.description.$valid && editUserForm.description.$dirty,
+        'has-error has-feedback': editUserForm.description.$invalid && editUserForm.description.$dirty}">
+            <label for="description" class="control-label">Beskrivelse:</label>
+            <textarea class="form-control col-md-12" rows="6" ng-model="user.description" name="description" id="description" placeholder="Beskrivelse"></textarea>
+        </div>
+
+        <div class="clearfix"></div>
+        <hr />
+
+        <div class="col-md-12">
+            <div class="input-group pull-right">
+                <span style="display:inline" class="input-group-btn">
+                    <button class="btn btn-warning" ui-sref="home.viewProfile({id: user.id})">Annuller</button>
+                </span>
+                <span style="display:inline" class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">Godkend</button>
+                </span>
+            </div>
+        </div>
+    </form>
+</div>

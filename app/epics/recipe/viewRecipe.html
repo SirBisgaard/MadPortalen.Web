@@ -1,0 +1,76 @@
+<div class="panel-body">
+    <form name="viewRecipeForm">
+
+        <div class="col-lg-12">
+            <div class="col-lg-5">
+                <img class="img-rounded img-responsive" style="margin-bottom: 10px;" alt="Responsive image"
+                     ng-src="{{recipePictureURL}}" width="350" height="260"/>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-lg-7 pull right" style="background-color: #F8F0F0; margin-bottom: 10px; border: 5px solid white;">
+                <h2 class="col-lg-12">
+                    {{recipe.name}}
+                </h2>
+                <p class="col-lg-12">Lavet af: <a href="" ui-sref="home.viewProfile({id: recipe.createdBy.id})">{{recipe.createdBy.authorName}}</a></p>
+                <hr class="col-lg-11" align="center">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <label>Rating: </label>
+                    <label>{{recipe.rating}}</label>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <label>Portioner: </label>
+                    <label>{{recipe.serves}}</label>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <label>Sværhedgrad: </label>
+                    <label>{{recipe.difficulty}}</label>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <label>Type: </label>
+                    <label>{{recipe.dishType}}</label>
+
+                    <div class="clearfix"></div>
+                </div>
+                <hr class="col-lg-11" align="center">
+                <p class="col-lg-12" style="word-break:break-all; white-space:pre-line;">
+                    {{recipe.shortDescription}}
+                </p>
+            </div>
+        </div>
+
+        <div class="col-lg-12" style="padding-top: 5px; padding-bottom: 15px">
+            <hr align="center">
+            <div class="col-lg-3 col-md-3">
+                <div ng-show="isNotOwnerOfRecipe(recipe.createdBy.id)" class="input-group ">
+                    <span class="input-group-addon">Rate</span>
+                    <uib-rating class="input-group-addon" ng-model="rate" ng-click="rateRecipe()" max="max" readonly="isReadonly" on-hover="hoveringOver(value)"
+                                on-leave="overStar = null" aria-labelledby="default-rating"></uib-rating>
+                    <span class="input-group-addon" ng-class="{'label-info': rate==0, 'label-danger': rate<=2 && rate>0, 'label-warning': rate==3, 'label-success': rate>=4}">{{rate}}</span></h4>
+                </div>
+            </div>
+            <div style="margin-top: 10px; margin-bottom: 20px">
+                <div class="pull-right" style="margin-left: 5px"><button class="btn btn-success btn-md" ng-click="addSharedRecipeToCookbook(recipe.id)" ng-show="isNotOwnerOfRecipe(recipe.createdBy.id) && !isRecipeInCookbook(recipe.id)"><span class="glyphicon glyphicon-plus"></span>  Kogebog</button></div>
+                <div class="pull-right" style="margin-left: 5px"><button class="btn btn-danger btn-md" ng-click="removeSharedRecipeFromCookbook(recipe.id)" ng-show="isNotOwnerOfRecipe(recipe.createdBy.id) && isRecipeInCookbook(recipe.id)"><span class="glyphicon glyphicon-minus"></span>  Kogebog</button></div>
+                <div class="pull-right" style="margin-left: 5px"><button class="btn btn-success btn-md" ng-click="addRecipeToMealPlan(recipe.id)"><span class="glyphicon glyphicon-plus"></span>  Madplan</button></div>
+                <div class="pull-right" style="margin-left: 5px"><button class="btn btn-warning btn-md" ui-sref="home.editRecipe({id : recipe.id})" ng-show="!isNotOwnerOfRecipe(recipe.createdBy.id)"><span class="glyphicon glyphicon-pencil"></span>  Ret Opskrift</button></div>
+            </div>
+        </div>
+
+        <div class="col-lg-12" style="margin-top: 10px;">
+            <div class="col-lg-3" style="background-color: #F8F0F0; margin-top: 20px; border: 5px solid white;">
+                <h3>Ingredienser</h3>
+                <ul ng-repeat=" ingredients in recipe.ingredients">
+                    <li>{{ingredients.amount}} {{ingredients.ingredient.unitType}} {{ingredients.ingredient.name}}</li>
+                </ul>
+            </div>
+            <div class="col-lg-8 pull-right" style="background-color: #F8F0F0; margin-top: 20px; border: 5px solid white;">
+                <h3>Fremgangsm&aring;de</h3>
+
+                <p style="word-break:break-all; white-space:pre-line;">{{recipe.longDescription}}</p>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </form>
+
+</div>
